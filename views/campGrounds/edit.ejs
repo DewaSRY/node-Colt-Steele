@@ -1,0 +1,116 @@
+<% layout('/layouts/boilerplate.ejs') %>
+
+<!-- boooo_____________ -->
+<div class="row">
+  <h1 class="text-center">New Camp Ground</h1>
+  <div class="col-6 offset-3">
+    <form
+      action="/campGrounds/<%=campGround._id%>?_method=PUT"
+      method="POST"
+      class="needs-validation"
+      novalidate
+    >
+      <div class="mb-3">
+        <label class="form-label" for="title">title</label>
+        <input
+          class="form-control"
+          type="text"
+          id="title"
+          name="campGround[title]"
+          value="<%=campGround.title %>"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="location">location</label>
+        <input
+          class="form-control"
+          type="text"
+          id="location"
+          name="campGround[location]"
+          value="<%=campGround.location %>"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="image">Image Url</label>
+        <input
+          class="form-control"
+          type="text"
+          id="image"
+          name="campGround[image]"
+          value="<%=campGround.image %>"
+          required
+        />
+        <div class="mb-3">
+          <label class="form-label" for="price">campGround Price</label>
+          <div class="input-group">
+            <span class="input-group-text" id="price-label">$</span>
+            <input
+              type="text"
+              class="form-control"
+              id="price"
+              placeholder="0.00"
+              aria-label="price"
+              aria-describedby="price-label"
+              name="campGround[price]"
+              value="<%=campGround.price %>"
+              required
+            />
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="description">Description</label>
+        <textarea
+          class="form-control"
+          type="text"
+          id="description"
+          name="campGround[description]"
+        >
+        required
+      "<%=campGround.description %>"
+
+
+        </textarea>
+      </div>
+      <div class="row">
+        <div class="col-sm">
+          <button class="btn btn-info">Update campGround</button>
+        </div>
+        <div class="col-sm">
+          <a
+            class="btn btn-outline-dark"
+            href="/campGrounds/<%=campGround._id %>/"
+            >Back to campGround</a
+          >
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<script>
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+  (function () {
+    "use strict";
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll(".needs-validation");
+
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms).forEach(function (form) {
+      form.addEventListener(
+        "submit",
+        function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+
+          form.classList.add("was-validated");
+        },
+        false
+      );
+    });
+  })();
+</script>
